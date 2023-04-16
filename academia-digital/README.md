@@ -1,104 +1,15 @@
 <h1>Conhecendo o Projeto Spring Data JPA na Prática </h1>
-<p> Sejam bem-vindos ao projeto de LAB <strong>Conhecendo o Projeto Spring Data JPA na Prática</strong> oferecido gratuitamente pela plataforma de cursos online <a href="https://dio.me/"><strong> Digital Innovation One</strong></a>.<br>
 
-<h2>🎯 Objetivo do Projeto</h2>
-<p>Ao final deste projeto, o Dev irá conhecer os principais conceitos de mapeamento objeto relacional (ORM) usando o <strong>Spring Data JPA</strong>. Para isso, uma <strong>API RESTful</strong> será desenvolvida com ênfase na modelagem de suas entidades, no domínio de uma academia de ginástica.</p>
+Spring Data JPA é um projeto que visa simplificar o acesso a dados em aplicações Java que usam a API de persistência Java (JPA). Spring Data JPA oferece uma abstração sobre o uso do JPA, permitindo que os desenvolvedores se concentrem na lógica de negócio e não nas questões técnicas de baixo nível. Spring Data JPA também facilita a implementação de repositórios, que são interfaces que definem as operações de consulta e manipulação de dados para uma entidade específica. Spring Data JPA usa uma convenção sobre configuração, ou seja, ele infere as consultas a partir dos nomes dos métodos dos repositórios, sem a necessidade de anotações ou XML. Além disso, Spring Data JPA integra-se com outras funcionalidades do Spring Framework, como o suporte a transações, cache, auditoria e eventos. Spring Data JPA é uma solução prática e produtiva para o desenvolvimento de aplicações baseadas em dados com JPA.
 
-<h2>
-🛑 Pré-requistos
-</h2>
+Spring Data JPA é um projeto que visa simplificar o acesso a dados em aplicações Java que usam a API de persistência Java (JPA). Spring Data JPA oferece vários recursos que facilitam o desenvolvimento e a manutenção de aplicações baseadas em JPA, tais como:
 
-- [x] Fundamentos do Spring Boot
+Repositórios: São interfaces que abstraem as operações de consulta e manipulação de dados em entidades JPA. Spring Data JPA implementa automaticamente os métodos dessas interfaces, seguindo convenções de nomenclatura ou anotações. Os repositórios também permitem o uso de consultas derivadas, consultas nomeadas, consultas nativas e especificações.
+Suporte a paginação e ordenação: Spring Data JPA permite que os repositórios retornem os resultados de uma consulta em páginas ou ordenados por algum critério. Isso facilita a implementação de interfaces de usuário que exibem os dados em tabelas ou listas.
+Suporte a auditoria: Spring Data JPA permite que os repositórios registrem automaticamente informações sobre quem e quando criou ou modificou uma entidade JPA. Isso é útil para fins de rastreabilidade e segurança.
+Suporte a projeções: Spring Data JPA permite que os repositórios retornem apenas os atributos desejados de uma entidade JPA, sem precisar carregar toda a entidade. Isso melhora o desempenho e a eficiência das consultas.
+Suporte a transações: Spring Data JPA integra-se com o framework de transações do Spring, permitindo que os repositórios sejamanotados com @Transactional para indicar o escopo e o comportamento das transações. Isso simplifica o gerenciamento de transações e evita erros comuns.
+Neste projeto abordamos o Spring Data JPA na Prática juntamente com a desenvolvedora da Digital Inovation One - DIO Camila Cavalcante onde acompanhamos passo a passo da implementação do presente projeto juntamente com todo o arcabouço teórico para a contrução do memso.
 
-- [x] Noções de SQL
-
-<h2> 🚦 Guia </h2>
-
-<ol>
-    <li> Apresentação do Projeto Base </li>
-    <li> Configuração do banco de dados (SGBD <em>PostgreSQL</em>)</li>
-    <li> Aplicando as <em>annotations</em></li>
-    <li> Execução do fluxo back-end: <em>Controller - Service - Repository</em></li>
-    <li> Validação - <em>Hibernate Validator</em> </li>
-    <li> Consultas Avançadas - <em>Derived Query - Native Query</em></li>
-</ol>
-
-<h2>🛠 Tecnologias Utilizadas</h2>
-
-<ul>
-    <li>IDE IntelliJ</li>
-    <li>Java 11</li>
-    <li>Maven</li>
-    <li><strong>Spring Web</strong></li>
-    <li><strong>Spring Data JPA</strong></li>
-    <li><strong>PostgreSQL Driver</strong></li>
-    <li><strong>Hibernate Validator</strong></li>
-    <li>Lombok</li>
-    <li>Postman</li>
-</ul>
-
-
-<h2><a href="https://strn.com.br/artigos/2018/12/11/todas-as-anota%C3%A7%C3%B5es-do-jpa-anota%C3%A7%C3%B5es-de-mapeamento/">
-Anotações de Mapeamento </a></h2>
-
-<strong>@Entity</strong>
-Usada para especificar que a classe anotada atualmente representa um tipo de entidade.
-
-<strong>@Table</strong>
-Usada para especificar a tabela principal da entidade atualmente anotada.
-
-<strong>@Id</strong>
-Especifica o identificador da entidade. Uma entidade deve sempre ter um atributo identificado.
-
-<strong>@GeneratedValue</strong>
-Especifica que o valor do identificador de entidade é gerado automaticamente.
-
-<strong>@Column</strong>
-Usada para especificar o mapeamento entre um atributo de entidade básico e a coluna da tabela de banco de dados.
-
-<strong>@JoinColumn</strong>
-Usada para especificar a coluna FOREIGN KEY. Indica que a entidade é a responsável pelo relacionamento.
-
-<strong>@OneToMany</strong>
-Usada para especificar um relacionamento de banco de dados um-para-muitos.
-
-<strong>@OneToOne</strong>
-Usada para especificar um relacionamento de banco de dados um-para-um.
-
-<strong>@ManyToOne</strong>
-Usada para especificar um relacionamento de banco de dados muitos-para-um.
-
-<strong>cascade</strong>
-Realizar operações em cascata só faz sentido em relacionamentos Pai - Filho.
-
-<strong>mappedBy</strong>
-Indica qual é o lado inverso ou não dominante da relação.
-
-<h2>🔗 Links Úteis</h2>
-<ul>
-    <li><a href="https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.6.1&packaging=jar&jvmVersion=11&groupId=me.dio.academia&artifactId=academia-digital&name=academia-digital&description=Tutorial%20API%20RESTful%20modelando%20sistema%20de%20academia%20de%20gin%C3%A1stica&packageName=me.dio.academia.digital&dependencies=web,data-jpa,postgresql,validation,lombok">Spring Initializr</a></li>
-    <li><a href="https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/common-application-properties.html">Common application properties</a></li>
-    <li><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories">Spring Data JPA - Reference Documentation</a></li>
-    <li><a href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#validator-gettingstarted">Validation Reference Implementation: Reference Guide</a></li>
-
-</ul>
-
-
-<h2> 🤝 Contribuindo </h2>
-
-Este repositório foi criado para fins de estudo, então contribua com ele. Se te ajudei de alguma forma, ficarei feliz em
-saber. E caso você conheça alguém que se identidique com o conteúdo, não deixe de compatilhar.
-
-Se possível:
-
-⭐️ Star o projeto
-
-🐛 Encontrar e relatar issues
-
-------------
-
-Disponibilizado com ♥ por [cami-la](https://www.linkedin.com/in/cami-la/ "cami-la").
-
-
-
+Para ter acesso ao projeto acesse o perfil da dev Camila Cavalcante https://github.com/cami-la Contribua dando Star e se inscrevendo na plataforma da Digital Inovation One - DIO.
 
